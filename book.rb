@@ -13,8 +13,11 @@ class Book
     @@all
   end
 
+  def collaborations
+    Collaboration.all.select {|c| c.book == self}
+  end
   def authors
-    Collaboration.all.select {|c| c.book == self}.map {|c| c.author}
+    collaborations.map {|b| b.author}.uniq
   end
   
 

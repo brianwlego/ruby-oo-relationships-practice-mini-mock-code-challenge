@@ -12,8 +12,11 @@ class Author
     @@all
   end
 
+  def collaborations
+    Collaboration.all.select {|c| c.author == self}
+  end
   def books
-    Collaboration.all.select {|c| c.author == self}.map {|b| b.book}
+    collaborations.map {|b| b.book}.uniq
   end
   def write_book(title, word_count)
     Collaboration.new(self, Book.new(title, word_count))
