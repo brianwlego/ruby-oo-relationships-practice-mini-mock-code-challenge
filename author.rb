@@ -13,7 +13,8 @@ class Author
   end
 
   def books
-    Collaboration.all.select {|c| c.author == self}
+    Collaboration.all.select {|c| c.author == self}.map {|b| b.book}
+    
   end
   def write_book(title, word_count)
     Collaboration.new(self, Book.new(title, word_count))

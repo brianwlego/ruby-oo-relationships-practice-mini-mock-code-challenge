@@ -13,8 +13,4 @@ class Collaboration
     @@all
   end
 
-  
-
-
-
 end
