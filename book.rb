@@ -13,14 +13,9 @@ class Book
     @@all
   end
 
-  def author
-    Collaboration.all.select {|c| c.book == self}
+  def authors
+    Collaboration.all.select {|c| c.book == self}.map {|c| c.author}
   end
-
   
-  
-
-
-
 
 end
